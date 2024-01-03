@@ -16,7 +16,9 @@ public class Main {
         }
         else if (a == 'C') {
             System.out.println("Usually");
-        }else {
+        }else if(a == 'D'){
+            System.out.println("Effort");
+        } else{
             System.out.println("Failure");
         }
     }
