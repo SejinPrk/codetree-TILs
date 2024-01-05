@@ -11,8 +11,8 @@ public class Main {
         if(a>b){ System.out.println("1");}
         else{ System.out.println("0");}
 
-        if(a<=b) {System.out.println("1");
-        else System.out.println("0");
+        if(a<=b) {System.out.println("1");}
+        else {System.out.println("0");}
 
         if(a<b){ System.out.println("1");}
         else{ System.out.println("0");}
