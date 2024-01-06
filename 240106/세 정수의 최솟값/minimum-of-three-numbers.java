@@ -7,10 +7,18 @@ public class Main {
         int b = sc.nextInt();
         int c = sc.nextInt();
 
-        if(a>b && c>b) System.out.println(b);
-        if(a>b && b>c) System.out.println(c);
-        if(a<b && a<c) System.out.println(a);
-        if(a<b && a>c) System.out.println(c);
-
+       
+        // a가 가장 작은 경우
+        if(a <= b && a <= c) {
+            System.out.println(a);
+        }
+        // b가 가장 작은 경우
+        else if(b <= a && b <= c) {
+            System.out.println(b);
+        }
+        // c가 가장 작은 경우
+        else {
+            System.out.println(c);
+        }
         }
     }
