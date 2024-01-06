@@ -6,24 +6,9 @@ public class Main {
         int a = sc.nextInt();
         int b = sc.nextInt();
         int c = sc.nextInt();
-        int min = 0;
 
-        if(a>b){
-            if(c>b){
-                min = b;
-                System.out.println(b);
-            } else{
-                min = c;
-                System.out.println(c);
-            }
-        }else{
-            if(c>a){
-                min = a;
-                System.out.println(a);
-            } else{
-                min = c;
-                System.out.println(c);
-            }
+        if(a>b && c>b) System.out.println(b);
+        if(a>b && b>c) System.out.println(c);
+        if(a<b && a<c) System.out.println(a);
         }
     }
-}
