@@ -8,7 +8,7 @@ public class Main {
         if (m >=3 && m <= 5) {
             System.out.println("Spring");
         } else if(m >= 6 && m <= 8){
-            System.out.println("Summper");
+            System.out.println("Summer");
         } else if(m >= 9 && m <= 11){
             System.out.println("Fall");
         } else if(m == 12 || m == 1 || m ==2){
