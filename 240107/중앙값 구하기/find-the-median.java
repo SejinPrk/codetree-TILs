@@ -7,12 +7,20 @@ import java.util.Scanner;
         int b = sc.nextInt();
         int c = sc.nextInt();
 
-        if((b=>a && a<=c) ||(a<=c && a=>b) ){
+        if(a >= b){
+            if(b >= c){
+                System.out.println(b);
+            }else if(a <= c){
+                System.out.println(a);
+            }else{
+                System.out.println(c);
+            } 
+        } else if(c < a){
             System.out.println(a);
-        } else if ((b<=a && b=>c) || (b<=c && b=>a)) {
-            System.out.println(b);
-        } else if ((c=>a && c<=b) || (c<=a && c=>b)){
+        } else if(b > c){
             System.out.println(c);
-        }
+        } else{
+            System.out.println(b);
+        } 
     }
 }
