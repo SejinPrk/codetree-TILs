@@ -9,9 +9,9 @@ import java.util.Scanner;
 
         if((b>a && a<c) ||(a<c && a>b) ){
             System.out.println(a);
-        } else if ((b<a && b>c) || (b<c && b>a) ) {
+        } else if ((b<a && b>c) || (b<c && b>a)) {
             System.out.println(b);
-        } else {
+        } else if ((c>a && c<b) || (c<a && c>b)){
             System.out.println(c);
         }
     }
