@@ -7,11 +7,11 @@ import java.util.Scanner;
         int b = sc.nextInt();
         int c = sc.nextInt();
 
-        if((b>a && a<c) ||(a<c && a>b) ){
+        if((b=>a && a<=c) ||(a<=c && a=>b) ){
             System.out.println(a);
-        } else if ((b<a && b>c) || (b<c && b>a)) {
+        } else if ((b<=a && b=>c) || (b<=c && b=>a)) {
             System.out.println(b);
-        } else if ((c>a && c<b) || (c<a && c>b)){
+        } else if ((c=>a && c<=b) || (c<=a && c=>b)){
             System.out.println(c);
         }
     }
