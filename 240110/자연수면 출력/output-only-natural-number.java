@@ -5,10 +5,9 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int a = sc.nextInt();
         int b = sc.nextInt();
-        int i = 1;
 
         if (a >= 1) {
-            for (i = a; i <= b+1; i++) {
+            for (int i = 1; i <= b; i++) {
                 System.out.print(a);
             }
         } else {
