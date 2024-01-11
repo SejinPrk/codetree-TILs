@@ -5,9 +5,11 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
 
+
         for(int i = 1; i <= n; i++) {
-             if((i % 2 == 1) && (i%3 ==0)){
-                    System.out.println(i);
+            int num= sc.nextInt();
+             if((num % 2 == 1) && (num%3 ==0)){
+                    System.out.println(num);
                 }
             }
                 
