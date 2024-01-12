@@ -12,6 +12,6 @@ import java.util.Scanner;
             sum += n;
             cnt++;
         }
-        System.out.println(sum + " " + (double)sum/cnt);
+        System.out.printf("%d %.1f\n",sum, (double)sum/cnt);
     }
 }
