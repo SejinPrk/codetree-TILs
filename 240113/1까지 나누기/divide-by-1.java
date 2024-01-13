@@ -8,12 +8,12 @@ public class Main {
         int num = n;
 
         for (int i = 1; i <= n; i++) {
-            num /= i;
-            cnt++;
             if (num <= 1) {
+                System.out.println(cnt);
                 break;
             }
+            num /= i;
+            cnt++;
         }
-        System.out.println(cnt-1);
     }
 }
