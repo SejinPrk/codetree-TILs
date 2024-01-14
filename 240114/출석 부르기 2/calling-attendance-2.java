@@ -7,7 +7,7 @@ public class Main {
         while (true) {
             int n = sc.nextInt();
             if (n == 1) {
-                System.out.println("Jonhn");
+                System.out.println("John");
             } else if (n == 2) {
                 System.out.println("Tom");
             } else if (n == 3) {
