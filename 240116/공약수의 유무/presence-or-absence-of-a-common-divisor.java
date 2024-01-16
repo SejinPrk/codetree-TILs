@@ -9,7 +9,7 @@ public class Main {
         boolean satisfied = false;
         for (int i = a; i <= b; i++) {
 
-            if (1920 % i == 0 || 2880 % i == 0) {
+            if (1920 % i == 0 && 2880 % i == 0) {
                 satisfied = true;
             }
         }
