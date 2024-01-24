@@ -8,6 +8,9 @@ public class Main {
 
         for(int i = 1; i <= n; i++){
             for(int j = 0; j < i; j++){
+            if(x == 'z'){
+                x = 'A';
+            }
                 System.out.print(x);
                 x++;
             }
