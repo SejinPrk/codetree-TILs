@@ -8,15 +8,14 @@ public class Main {
 
         for(int i = 0; i < n; i++){
             for(int j = 1; j < i+1; j++){
-                System.out.print(" ");
+                System.out.print("  ");
             }
             for(int j =0; j<n-i; j++){
                 if(x == 'Z'){
-                System.out.print((char)x++ + " ");
-                x = 'A';
+                    System.out.print((char)x++ + " ");
+                    x = 'A';
                 } else {
                     System.out.print((char)x++ + " ");
-                    x++;
                 }
                 
             }
