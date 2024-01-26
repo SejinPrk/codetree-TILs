@@ -19,6 +19,6 @@ public class Main {
             cnt++;
         }
         avg = (double)sum/cnt;
-        System.out.println(sum + " " + avg);
+        System.out.printf("%d %.1f\n", sum, avg);
     }
 }
