@@ -12,6 +12,7 @@ public class Main {
             if(arr[i] == 0){
                 break;
             }
+            cnt++;
         }
         
         for(int i = cnt-1; i >= 0 ; i--){
