@@ -5,12 +5,14 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int[] arr = new int[100];
 
-        for(int i = 0; i < 10; i++) {
+        for(int i = 0; i<10; i++){
             arr[i] = sc.nextInt();
-            if (i % 3 == 0){
-                System.out.println(arr[i-1]);
-                break;
-            }
         }
+        for(int i = 0; i<10; i++){
+        if(arr[i] % 3 == 0){
+             System.out.print(arr[i-1]);
+            break;
+        }
+    }
     }
 }
