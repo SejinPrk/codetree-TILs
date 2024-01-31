@@ -6,7 +6,7 @@ public class Main {
         int a = sc.nextInt();
         int b = sc.nextInt();
         int[] arr = new int[100];
-        int[] cnt = new int[10];
+        int[] cnt = new int[100];
         
         for (int i = 1; i < 100; i++) {
             arr[i] += a%b;
@@ -18,7 +18,7 @@ public class Main {
         }
 
         int sum  = 0;
-         for (int i = 0; i <= b; i++) {  
+         for (int i = 0; i < b; i++) {  
             sum += cnt[i] * cnt[i];
         }
         System.out.print(sum + " ");
