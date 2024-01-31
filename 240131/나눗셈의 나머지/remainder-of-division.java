@@ -18,7 +18,7 @@ public class Main {
         }
 
         int sum  = 0;
-         for (int i = 0; i < b; i++) {  
+         for (int i = 0; i <= b; i++) {  
             sum += cnt[i] * cnt[i];
         }
         System.out.print(sum + " ");
