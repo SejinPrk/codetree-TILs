@@ -13,7 +13,7 @@ public class Main {
             arr[i] += a%b;
             cnt[arr[i]]++;
             a/=b;
-            if (a <= 0) {
+            if (a <= 1) {
                 break;
             }
             tmp++;
