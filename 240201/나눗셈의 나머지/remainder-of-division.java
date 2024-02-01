@@ -7,7 +7,6 @@ public class Main {
         int b = sc.nextInt();
         int[] arr = new int[100];
         int[] cnt = new int[100];
-        int tmp = 0;
         
         for (int i = 1; i < 100; i++) {
             arr[i] += a%b;
@@ -16,7 +15,6 @@ public class Main {
             if (a <= 1) {
                 break;
             }
-            tmp++;
         }
 
         int sum  = 0;
