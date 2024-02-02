@@ -5,7 +5,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int[] arr = new int[102];
-        int cnt = 0;
+        long cnt = 0;
 
         int minVal = Integer.MAX_VALUE;
         for (int i = 0; i < n; i++) {
