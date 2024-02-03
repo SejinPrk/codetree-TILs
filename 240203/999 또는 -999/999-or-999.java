@@ -9,6 +9,7 @@ public class Main {
 
         for (int i = 0; i < 100; i++){
             arr[i] = sc.nextInt();
+            
             if (arr[i] == 999 || arr[i] == -999){  
                 break;
             } else if (arr[i] >= maxVal) {
@@ -18,7 +19,6 @@ public class Main {
             }
         }
 
-
-        System.out.println(maxVal + " " + minVal);
+         System.out.printf("%d %d",max,min);
     }
 }
