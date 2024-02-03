@@ -10,8 +10,8 @@ public class Main {
         for (int i = 0; i < n; i++){
             arr[i] = sc.nextInt();
         }
-        for(int i=0; i<arr.length-1; i++){
-            for(int j=i+1; j<arr.length; j++){
+        for(int i=0; i < n-1; i++){
+            for(int j=i+1; j < n; j++){
                 if(arr[i]<arr[j]){ 
                     int tmp=arr[i];
                     arr[i]=arr[j];
@@ -20,6 +20,6 @@ public class Main {
             }
         }
 
-         System.out.print(arr[0]+" "+arr[1]);
+         System.out.printf("%d %d",arr[0], arr[1]);
     }
 }
