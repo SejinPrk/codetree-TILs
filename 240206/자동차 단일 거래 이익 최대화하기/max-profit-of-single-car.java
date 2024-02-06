@@ -1,34 +1,23 @@
 import java.util.*;
 public class Main {
+    public static final int MAX_NUM = 1000;
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        int[] price = new int[MAX_NUM];
         int n = sc.nextInt();
-        int min =0;
-        int max=0;
-        int idx=0;
+        for(int i = 0; i < n; i++)
+            price[i] = sc.nextInt();
 
-        int arr[] = new int[1000];
-        for(int i=0; i<n; i++){
-            arr[i]=sc.nextInt();
-        }
-
-        min = arr[0];
-
-        for(int i=1; i<n;i++){
-            if(arr[i]<min){
-                min = arr[i];
-                idx = i;
+        int maxProfit = 0;
+        for(int i = 0; i < n; i++) {
+            for(int j = i + 1; j < n; j++) {
+                int profit = price[j] - price[i];
+                
+                if(profit > maxProfit)
+                    maxProfit = profit;
             }
         }
-        for(int i=idx; i<n; i++){
-            if(arr[i]>max){
-                max = arr[i];
-            }
-        }
-        if(idx==min-1){
-            System.out.print(0);
-        }else{
-            System.out.print(max - min);
-        }
+
+        System.out.print(maxProfit);
     }
 }
