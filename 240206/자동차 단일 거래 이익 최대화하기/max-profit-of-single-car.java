@@ -25,7 +25,7 @@ public class Main {
                 max = arr[i];
             }
         }
-        if(max<=min){
+        if(max<=min-1){
             System.out.print(0);
         }else{
             System.out.print(max - min);
