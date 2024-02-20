@@ -15,7 +15,7 @@ public class Main {
 
         for(int i = 0; i < n; i++) {
             for (int j = 0; j < str[i].length(); j++) {
-                if(str[i].charAt(j) == 'a'){
+                if(str[i].charAt(j) == str[0].charAt(0) && str[0].charAt(0) == 'a'){
                     cnt++;
                 }
             }
