@@ -14,9 +14,12 @@ public class Main {
 
         for(int i = 0; i < 10 ; i++) {
             if(str[i].charAt(str[i].length()-1) == a){
-                System.out.println(str[i]);
+                ++ cnt;
+                System.out.println(str[i]);  
             }
         }
-        System.out.println();
+        if (cnt == 0){
+            System.out.println("None");
+        }
     }
 }
