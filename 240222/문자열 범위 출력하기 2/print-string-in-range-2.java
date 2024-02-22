@@ -9,7 +9,7 @@ public class Main {
         for(int i = str.length()-1; i > str.length()-n-1; i--){
             System.out.print(str.charAt(i));
             if (n > str.length()) {
-                break;
+                System.out.println(str.charAt(i));
             }
         }
     }
