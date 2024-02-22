@@ -10,6 +10,7 @@ public class Main {
             System.out.print(str.charAt(i));
             if (n > str.length()) {
                 System.out.println(str.charAt(i));
+                break;
             }
         }
     }
