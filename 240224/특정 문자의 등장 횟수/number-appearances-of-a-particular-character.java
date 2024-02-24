@@ -6,6 +6,7 @@ public class Main {
         String str = sc.next();
         int cnt1 = 0; 
         int cnt2 = 0;
+        int len = str.length();
 
         for(int i = 0; i < len - 1; i++) {
             if(str.charAt(i) == 'e' && str.charAt(i + 1) == 'e')
