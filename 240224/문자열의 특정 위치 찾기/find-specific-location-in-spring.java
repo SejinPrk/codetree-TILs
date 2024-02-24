@@ -6,7 +6,7 @@ public class Main {
         String s = sc.next();
         char a = sc.next().charAt(0);
 
-        if (s.contains("ee")){
+        if (s.contains(a)){
             System.out.println(s.indexOf(a));
         } else {
             System.out.println("No");
