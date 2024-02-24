@@ -7,12 +7,12 @@ public class Main {
         int cnt1 = 0; 
         int cnt2 = 0;
 
-        if (s.contains("ee")){
-            cnt1++;
+        for(int i = 0; i < len - 1; i++) {
+            if(str.charAt(i) == 'e' && str.charAt(i + 1) == 'e')
+                cnt1++;
+            if(str.charAt(i) == 'e' && str.charAt(i + 1) == 'b')
+                cnt2++;
         }
-        if (s.contains("eb")){
-            cnt2++;
-        }
-        System.out.println(cnt1 + " " + cnt2);
+    System.out.println(cnt1 + " " + cnt2);
     }
 }
