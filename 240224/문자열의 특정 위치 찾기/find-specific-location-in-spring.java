@@ -6,7 +6,7 @@ public class Main {
         String s = sc.next();
         char a = sc.next().charAt(0);
 
-        if (s.contains(a)){
+        if (s.contains(String.valueOf(a))){
             System.out.println(s.indexOf(a));
         } else {
             System.out.println("No");
