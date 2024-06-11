@@ -1,16 +1,16 @@
 import java.util.Scanner;
 
 public class Main {
-    public static void printRect(int n) {
+    public static void sumN(int n) {
         int sum = 1;
         for(int i = 1; i <= n; i++) {
             sum+= i;
         }
-        System.out.println(cnt/10);
+        return sum / 10;
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        printRect(n);
+        System.out.println(sumN(n));
     }
 }
