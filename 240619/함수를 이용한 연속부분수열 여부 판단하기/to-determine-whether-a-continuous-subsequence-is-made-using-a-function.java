@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
-// 수열 B가 수열 A의 연속부분수열인지를 판단하는 함수
 public class Main {
 
+    // 수열 B가 수열 A의 연속부분수열인지를 판단하는 함수
     public static boolean isSubArray(int[] A, int[] B) {
         int n1 = A.length;
         int n2 = B.length;
