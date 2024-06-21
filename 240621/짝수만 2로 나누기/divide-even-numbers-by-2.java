@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Main {
+    // 짝수일 때 2로 나눠서 저장하는 함수
     public static void divideEvenNo(int[] arr, int n) {
         for(int i = 0; i < n; i++) {
             if (arr[i] % 2 == 0) {
