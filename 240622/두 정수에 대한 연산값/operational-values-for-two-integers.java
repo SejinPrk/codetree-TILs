@@ -9,6 +9,7 @@ public class Main {
         compareNo(a, b);
     }
 
+    // 숫자 비교하기
     public static void compareNo(int a, int b) {
         if (a > b) {
             a += 25;
