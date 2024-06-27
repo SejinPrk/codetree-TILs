@@ -1,22 +1,31 @@
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) { 
-        Scanner sc = new Scanner(System.in);
+    public static void printNumber1(int n) { 
+        if(n == 0)                          
+            return;                         
+
+        printNumber1(n - 1);  
+        System.out.print(n + " ");
+    }
+
+    public static void printNumber2(int n) { 
+        if(n == 0)                          
+            return;                         
+
+        System.out.print(n + " ");
+        printNumber2(n - 1);  
+    }
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
         int n = sc.nextInt();
-        printStar(n);             
-    }
 
-    public static void printStar(int n) {
-        if(n == 0)
-            return;
-        
-        for(int i = 1; i <= n; i++)
-            System.out.print(i + " ");
+        // 1~7까지 출력하는 함수
+        printNumber1(n);
         System.out.println();
-
-        for(int i = n; i >= 1; i--)
-            System.out.print(i + " ");
-
-    }
+        // 7~1까지 출력하는 함수
+        printNumber2(n);
+	}
 }
