@@ -3,15 +3,15 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         
-        // 첫 번째 줄: 그룹의 수 N
-        int N = scanner.nextInt();
+        // 그룹의 수 N
+        int N = sc.nextInt();
         
-        // 두 번째 줄: 2 * N개의 숫자
+        // 2 * N개의 숫자
         int[] numbers = new int[2 * N];
         for (int i = 0; i < 2 * N; i++) {
-            numbers[i] = scanner.nextInt();
+            numbers[i] = sc.nextInt();
         }
         
         // 숫자들을 오름차순으로 정렬
@@ -29,6 +29,6 @@ public class Main {
         // 결과 출력
         System.out.println(maxGroupSum);
         
-        scanner.close();
+        sc.close();
     }
 }
