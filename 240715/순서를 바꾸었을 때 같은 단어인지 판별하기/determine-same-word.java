@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.Arrays;
 
 public class Main {
     public static boolean areAnagrams(String word1, String word2) {
@@ -7,15 +6,32 @@ public class Main {
         if (word1.length() != word2.length()) {
             return false;
         }
-        
-        // 단어를 소문자로 변환한 뒤 정렬
-        char[] word1Array = word1.toLowerCase().toCharArray();
-        char[] word2Array = word2.toLowerCase().toCharArray();
-        Arrays.sort(word1Array);
-        Arrays.sort(word2Array);
 
-        // 정렬된 배열을 비교
-        return Arrays.equals(word1Array, word2Array);
+        // 두 단어를 소문자로 변환
+        word1 = word1.toLowerCase();
+        word2 = word2.toLowerCase();
+
+        // 각 단어의 문자 빈도를 저장할 배열
+        int[] charCount = new int[256];
+
+        // 첫 번째 단어의 각 문자의 빈도를 증가
+        for (char c : word1.toCharArray()) {
+            charCount[c]++;
+        }
+
+        // 두 번째 단어의 각 문자의 빈도를 감소
+        for (char c : word2.toCharArray()) {
+            charCount[c]--;
+        }
+
+        // 빈도 배열이 모두 0인지 확인
+        for (int count : charCount) {
+            if (count != 0) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public static void main(String[] args) {
