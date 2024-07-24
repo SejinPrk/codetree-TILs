@@ -2,33 +2,44 @@ import java.util.*;
 
 class SequenceSorter { // 수열을 처리하는 로직
     private int[] sequence;  // 원본 수열을 저장하는 배열
-    private Integer[] indices; // Arrays.sort() 메소드에 커스텀 비교자(Comparator)를 사용할 때 Integer 객체 필요
+    private Element[] elements;
+
+    // Comparable 인터페이스를 구현하는 내부 클래스
+    private static class Element implements Comparable<Element> {
+        int value;
+        int index;
+
+        Element(int value, int index) {
+            this.value = value;
+            this.index = index;
+        }
+
+        @Override
+        public int compareTo(Element other) {
+            if (this.value == other.value) {
+                return Integer.compare(this.index, other.index); // 값이 같으면 인덱스로 비교
+            }
+            return Integer.compare(this.value, other.value); // 값으로 비교
+        }
+    }
 
     public SequenceSorter(int[] sequence) { 
         this.sequence = sequence;
-        this.indices = new Integer[sequence.length];
+        this.elements = new Element[sequence.length];
         // 인덱스 배열 초기화: 0부터 sequence.length-1까지
         for (int i = 0; i < sequence.length; i++) {
-            indices[i] = i;
+            elements[i] = new Element(sequence[i], i);
         }
     }
 
     public int[] getSortedPositions() { // 실제 정렬 및 위치 계산을 수행
-        // 인덱스 배열을 정렬. 이때 sequence 값을 기준으로 정렬하되,
-        // 값이 같은 경우 원래 인덱스 순서를 유지
-        Arrays.sort(indices, (a, b) -> {
-            if (sequence[a] == sequence[b]) {
-                return Integer.compare(a, b); // 값이 같으면 인덱스로 비교
-            }
-            return Integer.compare(sequence[a], sequence[b]);  // 값으로 비교
-        });
+        Arrays.sort(elements);
 
         int[] result = new int[sequence.length];
         // 정렬된 인덱스 배열을 이용해 각 원소의 새 위치 계산
         for (int i = 0; i < sequence.length; i++) {
-            result[indices[i]] = i + 1; // 새 위치는 1부터 시작
+            result[elements[i].index] = i + 1; // 새 위치는 1부터 시작
         }
-
         return result;
     }
 }
@@ -38,7 +49,6 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         // 수열의 길이
         int n = sc.nextInt();
-
         int[] sequence = new int[n];
         
         for (int i = 0; i < n; i++) {
