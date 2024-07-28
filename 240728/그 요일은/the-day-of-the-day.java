@@ -14,41 +14,38 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        // 변수 선언 및 입력
-        int m1 = sc.nextInt();
-        int d1 = sc.nextInt();
-        int m2 = sc.nextInt();
-        int d2 = sc.nextInt();
-        sc.nextLine(); // 개행문자 제거
-        String A = sc.nextLine();
-        
-        String[] daysOfWeek = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
-        int targetDayIndex = 0;
-        for (int i = 0; i < 7; i++) {
-            if (daysOfWeek[i].equals(A)) {
-                targetDayIndex = i;
-                break;
-            }
+    Scanner sc = new Scanner(System.in);
+    // 변수 선언 및 입력
+    int m1 = sc.nextInt();
+    int d1 = sc.nextInt();
+    int m2 = sc.nextInt();
+    int d2 = sc.nextInt();
+    sc.nextLine(); // 개행문자 제거
+    String A = sc.nextLine();
+
+    String[] daysOfWeek = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
+    int targetDayIndex = 0;
+    
+    for (int i = 0; i < 7; i++) {
+        if (daysOfWeek[i].equals(A)) {
+            targetDayIndex = i;
+            break;
         }
+    }
 
-        // 두 날짜 간의 총 일수 계산
-        int startDay = numOfDays(m1, d1);
-        int endDay = numOfDays(m2, d2);
-        int totalDays = endDay - startDay + 1;
+    // 두 날짜 간의 총 일수 계산
+    int startDay = numOfDays(m1, d1);
+    int endDay = numOfDays(m2, d2);
+    int totalDays = endDay - startDay + 1;
 
-        // 시작 요일 계산 (월요일을 기준으로 0)
-        int startWeekdayIndex = (startDay - 1) % 7;
-        
-        // 목표 요일이 총 몇 번 등장하는지 계산
-        int count = 0;
-        for (int i = 0; i < totalDays; i++) {
-            int currentDayIndex = (startWeekdayIndex + i) % 7;
-            if (currentDayIndex == targetDayIndex) {
-                count++;
-            }
+    // 목표 요일이 총 몇 번 등장하는지 계산
+    int count = 0;
+    for (int i = 0; i < totalDays; i++) {
+        int currentDayIndex = i % 7;
+        if (currentDayIndex == targetDayIndex) {
+            count++;
         }
-
-        System.out.println(count);
+    }
+    System.out.println(count);
     }
 }
