@@ -11,23 +11,19 @@ public class Main {
 
         int[] daysInMonth = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         String[] dayNames = {"Sun", "Mon", "Tue", "Wed","Thu", "Fri", "Sat"};
-        int totalDays = 0;
+        
+        int totalDays = 0; 
 
-        if (m1 == m2) {
-           totalDays = d2 - d1;
-        } else {
-            totalDays += daysInMonth[m1 - 1] - d1;
-
-            for (int m = m1; m < m2 - 1; m++) {
-                totalDays += daysInMonth[m - 1];
-            }
-
-            totalDays += d2; // m2월의 일수
+        for (int m = m1; m <= m2; m++) {
+            int start = (m == m1)? d1 : 1;
+            int end = (m == m2) ? d2 : daysInMonth[m];
+            totalDays += end - start + 1;
         }
         
-        int dayIndex = (totalDays % 7 + 1) % 7;
+        int dayIndex = totalDays % 7;
 
         System.out.println(dayNames[dayIndex]);
+
         sc.close();
     }
 }
