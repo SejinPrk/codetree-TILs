@@ -29,11 +29,11 @@ public class Main {
             }
         }
 
-        // Calculate the day index
+        // 요일 계산
         int dayIndex = (totalDays % 7 + 7) % 7;
 
-        // Starting from the day `Mon` (m1, d1)
-        int startDayIndex = 0;  // `Mon` corresponds to 0 in dayNames array
+        // 월요일부터 시작: `Mon` (m1, d1)
+        int startDayIndex = 0;  // `Mon`: 0
         int finalDayIndex = (startDayIndex + dayIndex) % 7;
 
         System.out.println(dayNames[finalDayIndex]);
