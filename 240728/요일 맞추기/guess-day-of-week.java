@@ -10,29 +10,32 @@ public class Main {
         scanner.close();
 
         int[] daysInMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-        String[] dayNames = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+        String[] dayNames = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
 
+        // Calculate total days from m1/d1 to m2/d2
         int totalDays = 0;
 
-        // m1월 d1일부터 m2월 d2일까지의 날짜 수 계산
+        // 같은 달의 경우
         if (m1 == m2) {
             totalDays = d2 - d1;
         } else {
-            // m1월의 남은 일수
+            // 첫 달의 남은 일수
             totalDays += daysInMonth[m1 - 1] - d1;
-            
-            // m1+1월부터 m2-1월까지의 일수
-            for (int m = m1 + 1; m < m2; m++) {
-                totalDays += daysInMonth[m - 1];
-            }
-            
-            // m2월의 일수
+            // 두 번째 달의 일수
             totalDays += d2;
+            // 사이의 모든 달의 일수
+            for (int i = m1; i < m2 - 1; i++) {
+                totalDays += daysInMonth[i];
+            }
         }
 
-        // 요일 계산 (월요일부터 시작하므로 나머지에 1을 더함)
-        int dayIndex = (totalDays % 7 + 1) % 7;
-        
-        System.out.println(dayNames[dayIndex]);
+        // Calculate the day index
+        int dayIndex = (totalDays % 7 + 7) % 7;
+
+        // Starting from the day `Mon` (m1, d1)
+        int startDayIndex = 0;  // `Mon` corresponds to 0 in dayNames array
+        int finalDayIndex = (startDayIndex + dayIndex) % 7;
+
+        System.out.println(dayNames[finalDayIndex]);
     }
 }
