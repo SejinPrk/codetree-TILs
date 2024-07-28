@@ -1,41 +1,35 @@
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int m1 = scanner.nextInt();
-        int d1 = scanner.nextInt();
-        int m2 = scanner.nextInt();
-        int d2 = scanner.nextInt();
-        scanner.close();
-
-        int[] daysInMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-        String[] dayNames = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
-
-        // Calculate total days from m1/d1 to m2/d2
+    public static int numOfDays(int m, int d) {
+        int[] days = new int[]{0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         int totalDays = 0;
 
-        // 같은 달의 경우
-        if (m1 == m2) {
-            totalDays = d2 - d1;
-        } else {
-            // 첫 달의 남은 일수
-            totalDays += daysInMonth[m1 - 1] - d1;
-            // 두 번째 달의 일수
-            totalDays += d2;
-            // 사이의 모든 달의 일수
-            for (int i = m1; i < m2 - 1; i++) {
-                totalDays += daysInMonth[i];
-            }
-        }
+        for(int i = 1; i < m; i++)
+            totalDays += days[i];
+        
+        // m월에 d일이 있음
+        totalDays += d;
+        
+        return totalDays;
+    }
 
-        // 요일 계산
-        int dayIndex = (totalDays % 7 + 7) % 7;
-
-        // 월요일부터 시작: `Mon` (m1, d1)
-        int startDayIndex = 0;  // `Mon`: 0
-        int finalDayIndex = (startDayIndex + dayIndex) % 7;
-
-        System.out.println(dayNames[finalDayIndex]);
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        // 변수 선언 및 입력
+        int m1 = sc.nextInt();
+        int d1 = sc.nextInt();
+        int m2 = sc.nextInt();
+        int d2 = sc.nextInt();
+        
+        // 두 날짜간의 차이 계산
+        int diff = numOfDays(m2, d2) - numOfDays(m1, d1);
+        
+        // 음수인 경우
+        while(diff < 0)
+            diff += 7;
+        
+        String[] dayOfWeek = new String[]{"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
+        System.out.print(dayOfWeek[diff % 7]);
     }
 }
