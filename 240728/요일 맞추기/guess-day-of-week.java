@@ -12,7 +12,7 @@ public class Main {
         int[] daysInMonth = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         String[] dayNames = {"Mon", "Tue", "Wed","Thu", "Fri", "Sat", "Sun"};
         
-        int totalDays = 0;
+        int totalDays = -1;
 
         if (m1 == m2) {
             totalDays = d2 - d1;
@@ -24,12 +24,7 @@ public class Main {
             totalDays += d2;
         }
 
-        // 음수 값 처리
-        while (totalDays < 0) {
-            totalDays += 7;
-        }
-        
-        int dayIndex = totalDays % 7;
+        int dayIndex = (totalDays % 7 + 7) % 7;
         System.out.println(dayNames[dayIndex]);
 
         sc.close();
