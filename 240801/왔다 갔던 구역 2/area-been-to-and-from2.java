@@ -11,9 +11,6 @@ public class Main {
         Map<Integer, Integer> visited = new HashMap<>(); // 위치와 방문 횟수
         int currentPosition = 0; // 시작 위치 (0)
 
-        // 시작 위치 방문
-        visited.put(currentPosition, 1);
-
         for (int i = 0; i < n; i++) {
             String[] command = sc.nextLine().split(" ");
             int distance = Integer.parseInt(command[0]);
