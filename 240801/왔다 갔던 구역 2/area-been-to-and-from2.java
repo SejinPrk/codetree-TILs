@@ -1,3 +1,5 @@
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -6,10 +8,11 @@ public class Main {
         int n = sc.nextInt();
         sc.nextLine(); // 버퍼 비우기
 
-        final int OFFSET = 10000; // 음수 좌표를 양수 인덱스로 변환
-        int[] visited = new int[20001]; // -10000 ~ 10000 범위 커버
+        Map<Integer, Integer> visited = new HashMap<>(); // 위치와 방문 횟수
+        int currentPosition = 0; // 시작 위치 (0)
 
-        int currentPosition = OFFSET; // 시작 위치 (0)
+        // 시작 위치 방문
+        visited.put(currentPosition, 1);
 
         for (int i = 0; i < n; i++) {
             String[] command = sc.nextLine().split(" ");
@@ -17,21 +20,21 @@ public class Main {
             String direction = command[1];
 
             if (direction.equals("L")) {
-                for (int j = 1; j <= distance; j++) {
+                for (int j = 0; j < distance; j++) {
                     currentPosition--;
-                    visited[currentPosition]++;
+                    visited.put(currentPosition, visited.getOrDefault(currentPosition, 0) + 1);
                 }
             } else { // direction.equals("R")
-                for (int j = 1; j <= distance; j++) {
+                for (int j = 0; j < distance; j++) {
                     currentPosition++;
-                    visited[currentPosition]++;
+                    visited.put(currentPosition, visited.getOrDefault(currentPosition, 0) + 1);
                 }
             }
         }
 
         // 2번 이상 지나간 영역의 크기 계산
         int result = 0;
-        for (int count : visited) {
+        for (int count : visited.values()) {
             if (count >= 2) {
                 result++;
             }
