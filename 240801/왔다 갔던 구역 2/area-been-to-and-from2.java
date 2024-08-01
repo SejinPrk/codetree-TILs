@@ -6,33 +6,33 @@ public class Main {
         int n = sc.nextInt();
         sc.nextLine(); // 버퍼 비우기
 
-        final int OFFSET = 1000;
-        int[] visited = new int[2001];
+        final int OFFSET = 10000; // 음수 좌표를 양수 인덱스로 변환
+        int[] visited = new int[20001]; // -1000 ~ 1000 범위 커버
 
-        int currPosition = OFFSET; // 시작 위치 (0)
+        int currentPosition = OFFSET; // 시작 위치 (0)
 
         for (int i = 0; i < n; i++) {
             String[] command = sc.nextLine().split(" ");
             int distance = Integer.parseInt(command[0]);
             String direction = command[1];
 
-            if (direction.equals("L")) { // 왼쪽
+            if (direction.equals("L")) {
                 for (int j = 1; j <= distance; j++) {
-                    currPosition--;
-                    visited[currPosition]++;
+                    currentPosition--;
+                    visited[currentPosition]++;
                 }
-            } else { // 오른쪽
+            } else { // direction.equals("R")
                 for (int j = 1; j <= distance; j++) {
-                    currPosition++;
-                    visited[currPosition]++;
+                    currentPosition++;
+                    visited[currentPosition]++;
                 }
             }
         }
 
-        // 2번 이상 방문한 영역의 크기 계산
+        // 2번 이상 지나간 영역의 크기 계산
         int result = 0;
-        for (int cnt : visited) {
-            if (cnt >= 2) {
+        for (int count : visited) {
+            if (count >= 2) {
                 result++;
             }
         }
