@@ -7,7 +7,7 @@ public class Main {
         sc.nextLine(); // 버퍼 비우기
 
         final int OFFSET = 10000; // 음수 좌표를 양수 인덱스로 변환
-        int[] visited = new int[20001]; // -1000 ~ 1000 범위 커버
+        int[] visited = new int[20001]; // -10000 ~ 10000 범위 커버
 
         int currentPosition = OFFSET; // 시작 위치 (0)
 
