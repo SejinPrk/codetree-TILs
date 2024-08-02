@@ -1,80 +1,51 @@
-import java.util.*;
+import java.util.Scanner;
 
-class Order {
-    int value;
-    String order;
-    public Order(int value, String order) {
-        this.value = value;
-        this.order = order;
-    }
-}
 public class Main {
+    public static final int MAX_K = 100000;
+    
+    // 변수 선언
+    public static int n;
+    public static int[] a = new int[2 * MAX_K + 1];
+    public static int[] cntB = new int[2 * MAX_K + 1];
+    public static int[] cntW = new int[2 * MAX_K + 1];
+    public static int b, w, g;
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        Order[] orders = new Order[n]; // 전체배열 크기를 구하기 위한 임시 배열
-        
-        List<Integer> tmp = new ArrayList<Integer>();
-        int curr = 0;
-        for (int i = 0; i < n; i++) {
-            int value = sc.nextInt();
-            String order = sc.next();
-            orders[i] = new Order(value, order);
-            if (order.equals("R")) {
-                tmp.add(curr + value);
-                curr += value;
-            } else {
-                tmp.add(curr - value);
-                curr -= value;
-            }
-        }
-        // offset 값 구하기 위해 배열크기 및 최대최소 구하기
-        int min = Integer.MAX_VALUE;
-        int max = Integer.MIN_VALUE;
-        for (Integer t : tmp) {
-            if (t < min) {
-                min = t;
-            }
-            if (t > max) {
-                max = t;
-            }
-        }
-        int arrSize = max - min;
-        int offset = min * -1;
-        int[] blackArr = new int[arrSize]; // 횟수 저장할곳
-        int[] whiteArr = new int[arrSize];
-        String[] colorArr = new String[arrSize];
-        int idx = offset;
-        for (Order o : orders) {
-            if (o.order.equals("R")) {
-                for (int i = idx; i < idx + o.value; i++) {
-                    blackArr[i]++;
-                    colorArr[i] = "B";
+        // 명령의 수 입력
+        n = sc.nextInt();
+
+        // 시작 위치 설정 (중앙)
+        int cur = MAX_K;
+        for (int i = 1; i <= n; i++) {
+            int x = sc.nextInt();
+            char c = sc.next().charAt(0);
+            if (c == 'L') {
+                // x칸 왼쪽으로 칠하기
+                while (x-- > 0) {
+                    a[cur] = 1; // 흰색
+                    cntW[cur]++;
+                    if (x > 0) cur--;
                 }
-                idx += o.value;
             } else {
-                for (int i = idx-1; i >= idx - o.value; i--) {
-                    whiteArr[i]++;
-                    colorArr[i] = "W";
+                // x칸 오른쪽으로 칠하기
+                while (x-- > 0) {
+                    a[cur] = 2; // 검은색
+                    cntB[cur]++;
+                    if (x > 0) cur++;
                 }
-                idx -= o.value;
             }
         }
 
-        int white = 0;
-        int black = 0;
-        int gray = 0;
-        for (int i = 0; i < arrSize; i++) {
-            if (blackArr[i] >= 2 && whiteArr[i] >= 2) {
-                gray++;
-            } else {
-                if (colorArr[i].equals("W")) {
-                    white++;
-                } else {
-                    black++;
-                }
-            }
+        // 타일의 색상 결정
+        for (int i = 0; i <= 2 * MAX_K; i++) {
+            // 검은색과 흰색으로 두 번 이상 칠해진 타일은 회색
+            if (cntB[i] >= 2 && cntW[i] >= 2) g++;
+            // 현재 색 == 타일의 색
+            else if (a[i] == 1) w++;
+            else if (a[i] == 2) b++;
         }
-        System.out.print(white + " " + black + " " + gray);
+
+        System.out.print(w + " " + b + " " + g);
     }
 }
