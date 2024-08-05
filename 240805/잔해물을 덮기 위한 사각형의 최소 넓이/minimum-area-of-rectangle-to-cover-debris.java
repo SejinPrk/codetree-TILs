@@ -16,13 +16,13 @@ public class Main {
             rect2[i] = scanner.nextInt();
         }
 
-        int result = calculateRemainingArea(rect1, rect2);
+        int result = calculateMinCoveringArea(rect1, rect2);
         System.out.println(result);
 
         scanner.close();
     }
 
-    public static int calculateRemainingArea(int[] rect1, int[] rect2) {
+    public static int calculateMinCoveringArea(int[] rect1, int[] rect2) {
         // 겹치는 영역 계산
         int left = Math.max(rect1[0], rect2[0]);
         int right = Math.min(rect1[2], rect2[2]);
@@ -31,17 +31,35 @@ public class Main {
 
         // 겹치는 영역이 있는지 확인
         if (left < right && bottom < top) {
-            // 겹치는 영역이 있다면, 잔해물의 영역을 계산
-            int width = Math.max(rect1[2], right) - Math.min(rect1[0], left);
-            int height = Math.max(rect1[3], top) - Math.min(rect1[1], bottom);
+            int minX = rect1[0];
+            int maxX = rect1[2];
+            int minY = rect1[1];
+            int maxY = rect1[3];
+
+            // 왼쪽 영역
+            if (rect1[0] < left) {
+                maxX = Math.max(maxX, left);
+            }
+            // 오른쪽 영역
+            if (right < rect1[2]) {
+                minX = Math.min(minX, right);
+            }
+            // 아래쪽 영역
+            if (rect1[1] < bottom) {
+                maxY = Math.max(maxY, bottom);
+            }
+            // 위쪽 영역
+            if (top < rect1[3]) {
+                minY = Math.min(minY, top);
+            }
 
             // 잔해물이 없는 경우
-            if (left <= rect1[0] && right >= rect1[2] && bottom <= rect1[1] && top >= rect1[3]) {
+            if (minX == maxX || minY == maxY) {
                 return 0;
             }
 
             // 최소 직사각형의 넓이 반환
-            return width * height;
+            return (maxX - minX) * (maxY - minY);
         } else {
             // 겹치는 영역이 없다면 첫 번째 직사각형의 전체 넓이를 반환
             return (rect1[2] - rect1[0]) * (rect1[3] - rect1[1]);
