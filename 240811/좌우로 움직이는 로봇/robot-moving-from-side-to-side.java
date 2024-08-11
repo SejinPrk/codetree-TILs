@@ -1,69 +1,73 @@
 import java.util.Scanner;
 
 public class Main {
+    public static int OFFSET = 1000000; // 음수 인덱스 해결
+    public static int[] a = new int[1000001];
+    public static int[] b = new int[1000001];
+    public static int aSec = 1;
+    public static int bSec = 1;
+    public static int ans = 0;
+
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int m = sc.nextInt();
-
-        // A, B의 움직임 정보 저장
-        int[][] movesA = new int[n][2];
-        int[][] movesB = new int[m][2];
-
-        // A의 움직임 입력
-        for (int i = 0; i < n; i++) {
-            int t = sc.nextInt();
-            String d = sc.next();
-            movesA[i] = new int[]{t, d.equals("L") ? -1 : 1};
-        }
-
-        // B의 움직임 입력
-        for (int i = 0; i < m; i++) {
-            int t = sc.nextInt();
-            String d = sc.next();
-            movesB[i] = new int[]{t, d.equals("L") ? -1 : 1};
-        }
-
-        int meetCnt = countMeetnigs(movesA, movesB);
-        System.out.println(meetCnt);
-    }
+        int t;
+        char d;
+        int checkSame = 0;
         
-    private static int countMeetnigs(int[][] movesA, int[][] movesB) {
-        int posA = 0, posB = 0;
-        int timeA = 0, timeB = 0;
-        int indexA = 0, indexB = 0;
-        int meetCnt = 0;
-        boolean lastPositionSame = true;
+        for(int i = 0; i < n; i++) {
+            t = sc.nextInt();
+            d = sc.next().charAt(0);
 
-        while (indexA < movesA.length || indexB < movesB.length) {
-            // A 이동
-            if (indexA < movesA.length && timeA == 0) {
-                int[] move = movesA[indexA];
-                timeA = move[0];
-                posA += move[1];
-                indexA++;
+            if (d == 'R') {
+                for(int j = aSec; j < aSec + t; j++) {
+                    a[j] = a[j-1] + 1; // 오른쪽으로 이동
+                }
+            }else if (d == 'L') {
+                for(int j = aSec; j < aSec + t; j++) {
+                    a[j] = a[j-1] - 1;// 왼쪽으로 이동
+                }
             }
-
-            // B 이동
-            if (indexB < movesB.length && timeB == 0) {
-                int[] move = movesB[indexB];
-                timeB = move[0];
-                posB += move[1];
-                indexB++;
-            }
-
-            // 만남 확인
-            if (posA == posB && !lastPositionSame) {
-                meetCnt++;
-            }
-
-            lastPositionSame = (posA == posB);
-
-            // 시간 감소
-            if (timeA > 0) timeA--;
-            if (timeB > 0) timeB--;
+            aSec = aSec + t;
         }
 
-        return meetCnt;
+        // 마지막 위치 유지
+        for(int i = aSec; i < 1000001; i++) {
+            a[i] = a[aSec - 1];
+        }
+
+        for(int i = 0; i < m; i++){
+            t = sc.nextInt();
+            d = sc.next().charAt(0);
+
+            if (d == 'R') {
+                for(int j = bSec; j < bSec + t; j++) {
+                    b[j] = b[j-1] + 1;
+                }
+            }else if (d == 'L') {
+                for(int j = bSec; j < bSec + t; j++) {
+                    b[j] = b[j-1] - 1;
+                }
+            }
+            bSec = bSec + t;
+        }
+
+        for(int i = bSec; i < 1000001; i++){
+            b[i] = b[bSec - 1];
+        }
+
+        for(int i = 0; i < 1000001; i++){ 
+            if (a[i] == b[i]) { // 로봇들이 같은 위치에 있을 때, 직전에 다른 위치에 있었는지 확인
+                if (checkSame + 1 != i) { // 연속으로 같은 위치에 있는 경우를 제외
+                    ans++;
+                }
+                checkSame = i;
+            }
+        }
+
+        System.out.println(ans - 1); // 시작 위치(첫 만남)는 제외
     }
+
 }
