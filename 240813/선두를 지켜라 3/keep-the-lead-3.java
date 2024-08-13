@@ -2,18 +2,18 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         
-        int N = scanner.nextInt();
-        int M = scanner.nextInt();
+        int N = sc.nextInt();
+        int M = sc.nextInt();
         
         long[] distanceA = new long[1000001];
         long[] distanceB = new long[1000001];
         
         int totalTime = 0;
         for (int i = 0; i < N; i++) {
-            int v = scanner.nextInt();
-            int t = scanner.nextInt();
+            int v = sc.nextInt();
+            int t = sc.nextInt();
             for (int j = totalTime + 1; j <= totalTime + t; j++) {
                 distanceA[j] = distanceA[j-1] + v;
             }
@@ -22,8 +22,8 @@ public class Main {
         
         totalTime = 0;
         for (int i = 0; i < M; i++) {
-            int v = scanner.nextInt();
-            int t = scanner.nextInt();
+            int v = sc.nextInt();
+            int t = sc.nextInt();
             for (int j = totalTime + 1; j <= totalTime + t; j++) {
                 distanceB[j] = distanceB[j-1] + v;
             }
@@ -31,7 +31,7 @@ public class Main {
         }
         
         int changes = 0;
-        int currentLead = 0; // 0: tie, 1: A leads, 2: B leads
+        int currentLead = 0; // 0: 동점, 1: A가 선두, 2: B가 선두
         
         for (int i = 1; i <= totalTime; i++) {
             int newLead;
@@ -40,7 +40,7 @@ public class Main {
             } else if (distanceA[i] < distanceB[i]) {
                 newLead = 2;
             } else {
-                newLead = 0;
+                newLead = 0; // 동점일 경우
             }
             
             if (newLead != currentLead) {
@@ -51,6 +51,6 @@ public class Main {
         
         System.out.println(changes);
         
-        scanner.close();
+        sc.close();
     }
 }
