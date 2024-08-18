@@ -51,7 +51,8 @@ public class Main {
                     dir = 3;
                     break;
                 default:
-                    return -1;
+                    dir = -1;
+                    break;
             }
             
             // 주어진 방향대로 dist 만큼 위치를 이동
