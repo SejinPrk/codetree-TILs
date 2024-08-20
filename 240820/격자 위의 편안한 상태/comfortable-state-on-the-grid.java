@@ -22,6 +22,7 @@ public class Main {
         sc.close();
     }
 
+    // 편안한 상태인지 확인
     private static boolean isComfortable(int r, int c) {
         int cnt = 0;
     
