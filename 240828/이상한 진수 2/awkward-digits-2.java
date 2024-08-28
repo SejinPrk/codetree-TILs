@@ -1,8 +1,12 @@
 import java.util.Scanner;
 
 public class Main {
-    public static int findMaxValue(String a) {
-        // 주어진 이진수 문자열 a에서 가능한 최대값을 찾아내는 함수
+    public static int findMaxValue(String a) {  // 주어진 이진수 문자열 a에서 가능한 최대값을 찾아내는 함수
+        // a가 1일 때 단 하나의 비트를 바꿔서 나오는 값은 0
+        if (a.equals("1")) {
+            return 0;
+        }
+        
         int max = Integer.parseInt(a, 2); // 처음에 a 자체의 10진수 값 저장
 
         // 각 자리에 대해 비트 하나씩 바꾸기
