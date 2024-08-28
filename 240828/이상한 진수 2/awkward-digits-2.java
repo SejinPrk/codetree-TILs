@@ -6,7 +6,24 @@ public class Main {
         if (a.equals("1")) {
             return 0;
         }
+
+                // a가 전부 1로 이루어져 있으면 가장 큰 수는 a의 첫 번째 비트를 0으로 바꾼 경우이다.
+        boolean allOnes = true;
+        for (char c : a.toCharArray()) {
+            if (c != '1') {
+                allOnes = false;
+                break;
+            }
+        }
         
+        // a가 모두 1로 이루어져 있을 경우
+        if (allOnes) {
+            // a의 첫 번째 자리를 0으로 바꾼 값을 반환 (ex. "1111" -> "0111")
+            char[] modified = a.toCharArray();
+            modified[0] = '0';
+            return Integer.parseInt(String.valueOf(modified), 2);
+        }
+
         int max = Integer.parseInt(a, 2); // 처음에 a 자체의 10진수 값 저장
 
         // 각 자리에 대해 비트 하나씩 바꾸기
