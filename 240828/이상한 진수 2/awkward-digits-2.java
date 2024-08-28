@@ -8,7 +8,7 @@ public class Main {
             return 0;
         }
         
-        // a가 전부 1로 이루어져 있으면 가장 큰 수는 a의 첫 번째 비트를 0으로 바꾼 경우이다.
+        // a가 전부 1로 이루어져 있으면 가장 큰 수는 가장 작은 비트를 0으로 바꾼 경우이다.
         boolean allOnes = true;
         for (char c : a.toCharArray()) {
             if (c != '1') {
@@ -19,9 +19,9 @@ public class Main {
         
         // a가 모두 1로 이루어져 있을 경우
         if (allOnes) {
-            // a의 첫 번째 자리를 0으로 바꾼 값을 반환 (ex. "1111" -> "0111")
+            // 가장 작은 비트만 0으로 바꾼 값을 반환 (ex. "1111" -> "1110")
             char[] modified = a.toCharArray();
-            modified[0] = '0';
+            modified[a.length() - 1] = '0';
             return Integer.parseInt(String.valueOf(modified), 2);
         }
         
