@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
     
@@ -46,15 +46,15 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         
         // 첫 번째 줄에 숫자의 개수 입력
-        int n = scanner.nextInt();
+        int n = sc.nextInt();
         
         // n개의 숫자 입력
         int[] numbers = new int[n];
         for (int i = 0; i < n; i++) {
-            numbers[i] = scanner.nextInt();
+            numbers[i] = sc.nextInt();
         }
         
         // 최대 합을 구함
@@ -63,6 +63,6 @@ public class Main {
         // 결과 출력 (carry가 발생하지 않는 경우가 없으면 -1 출력)
         System.out.println(result);
         
-        scanner.close();
+        sc.close();
     }
 }
