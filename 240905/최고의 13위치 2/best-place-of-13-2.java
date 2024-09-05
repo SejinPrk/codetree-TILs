@@ -22,7 +22,7 @@ public class Main {
                 for (int i2 = 0; i2 < n; i2++) {
                     for (int j2 = 0; j2 <= n - 3; j2++) {
                         // 겹치는지 확인
-                        if (i1 == i2 && (j1 == j2 || j1 == j2 + 1 || j1 + 1 == j2)) {
+                        if (i1 == i2 && !(j1 + 2 < j2 || j2 + 2 < j1)) {
                             continue;
                         }
                         int coins2 = grid[i2][j2] + grid[i2][j2 + 1] + grid[i2][j2 + 2];
