@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         n = sc.nextInt();
-        
+
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 grid[i][j] = sc.nextInt();
@@ -19,7 +19,7 @@ public class Main {
 
         // 첫 번째 격자 위치 선택
         for (int i1 = 0; i1 < n; i1++) {
-            for (int j1 = 0; j1 <= n; j1++) {
+            for (int j1 = 0; j1 <= n - 3; j1++) {
                 int coins1 = grid[i1][j1] + grid[i1][j1 + 1] + grid[i1][j1 + 2];
 
                 // 두 번째 격자 위치 선택
