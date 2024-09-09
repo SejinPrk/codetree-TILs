@@ -27,8 +27,6 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
-        // 입력 받기
         int N = sc.nextInt(); // 수열 A의 길이
         int M = sc.nextInt(); // 수열 B의 길이
 
@@ -46,9 +44,7 @@ public class Main {
         // 아름다운 수열의 개수를 계산
         int result = countBeautifulSequences(A, B, N, M);
 
-        // 결과 출력
         System.out.println(result);
-
         sc.close();
     }
 }
