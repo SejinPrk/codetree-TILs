@@ -1,56 +1,37 @@
 import java.util.*;
 
 public class Main {
+    // 아름다운 수열의 개수를 세는 함수
     public static int countBeautifulSequences(int[] A, int[] B, int N, int M) {
-        int cnt = 0;
-
-        // 수열 B의 모든 순열을 저장할 Set (중복을 피하기 위함)
-        Set<String> permutations = new HashSet<>();
-        permute(B, 0, M, permutations);
-
-        // 수열 A에서 길이가 M인 모든 연속 부분 수열을 체크
+        // 수열 B를 정렬해 놓음
+        Arrays.sort(B);
+        
+        int count = 0;
+        
+        // 수열 A에서 길이가 M인 모든 연속 부분 수열을 탐색
         for (int i = 0; i <= N - M; i++) {
+            // A의 연속 부분 수열을 추출
             int[] subArray = Arrays.copyOfRange(A, i, i + M);
-            if (permutations.contains(arrayToString(subArray))) {
-                cnt++;
+            
+            // 추출한 부분 수열을 정렬
+            Arrays.sort(subArray);
+            
+            // 정렬된 B와 부분 수열이 동일한지 확인
+            if (Arrays.equals(subArray, B)) {
+                count++;
             }
         }
-        return cnt;
-    }
-
-    // 배열을 문자열로 변환해 순열 비교
-    public static String arrayToString(int[] array) {
-        StringBuilder sb = new StringBuilder();
-        for (int num : array) {
-            sb.append(num).append(" ");
-        }
-        return sb.toString().trim();
-    }
-
-    // 수열의 모든 순열을 구하는 함수    
-    public static void permute(int[] array, int l, int r, Set<String> permutations) {
-        if (l == r) {
-            permutations.add(arrayToString(array));
-        } else {
-            for (int i = l; i < r; i++) {
-                swap(array, l, i);
-                permute(array, l + 1, r, permutations);
-                swap(array, l, i); // 원상복구
-            }
-        }
-    }
-
-    // 배열의 두 원소를 교환하는 함수
-    public static void swap(int[] array, int i, int j) {
-        int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
+        
+        return count;
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
-        int M = sc.nextInt();
+
+        // 입력 받기
+        int N = sc.nextInt(); // 수열 A의 길이
+        int M = sc.nextInt(); // 수열 B의 길이
+
         int[] A = new int[N]; // 수열 A
         int[] B = new int[M]; // 수열 B
 
@@ -62,9 +43,12 @@ public class Main {
             B[i] = sc.nextInt();
         }
 
+        // 아름다운 수열의 개수를 계산
         int result = countBeautifulSequences(A, B, N, M);
 
+        // 결과 출력
         System.out.println(result);
+
         sc.close();
     }
 }
