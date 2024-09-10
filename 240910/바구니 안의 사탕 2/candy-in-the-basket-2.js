@@ -23,15 +23,5 @@ function maximizeCandies(N, K, baskets) {
     return maxCandies;
 }
 
-// 입력 예시
-const N = 4;
-const K = 3;
-const baskets = [
-    [4, 7],
-    [10, 15],
-    [2, 2],
-    [5, 1]
-];
-
 // 최대 사탕 수 출력
 console.log(maximizeCandies(N, K, baskets));
