@@ -33,11 +33,11 @@ rl.on('close', () => {
 function maximizeCandies(N, K, baskets) {
     let maxCandies = 0;
 
-    // 중심점 c를 0부터 100까지 이동하면서 최적의 구간을 찾습니다.
+    // 중심점 c를 0부터 100까지 이동하면서 최적의 구간을 찾기
     for (let c = 0; c <= 100; c++) {
         let currentCandies = 0;
 
-        // 각 바구니에 대해 해당 바구니가 구간 [c-K, c+K] 안에 있는지 확인합니다.
+        // 각 바구니에 대해 해당 바구니가 구간 [c-K, c+K] 안에 있는지 확인
         for (let i = 0; i < N; i++) {
             const candyCount = baskets[i][0];
             const position = baskets[i][1];
