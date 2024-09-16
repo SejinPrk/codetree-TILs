@@ -33,18 +33,22 @@ public class Main {
                 int targetHundreds = targetNo / 100;
                 int targetTens = (targetNo / 10) % 10;
                 int targetUnits = targetNo % 10;
+int cnt1 = 0;
+int cnt2 = 0;
 
-                int cnt1 = 0; // 동일한 위치에 있는 숫자
-                int cnt2 = 0; // 다른 위치에 있는 숫자
+if (hundreds == targetHundreds) cnt1++;
+if (tens == targetTens) cnt1++;
+if (units == targetUnits) cnt1++;
 
-                if (hundreds == targetHundreds) cnt1++;
-                if (tens == targetTens) cnt1++;
-                if (units == targetUnits) cnt1++;          
-
-                if (hundreds == targetTens || hundreds == targetUnits) cnt2++;
-                if (tens == targetHundreds || tens == targetUnits) cnt2++;
-                if (units == targetHundreds || units == targetTens) cnt2++;
-
+if (hundreds != targetHundreds) {
+    if (hundreds == targetTens || hundreds == targetUnits) cnt2++;
+}
+if (tens != targetTens) {
+    if (tens == targetHundreds || tens == targetUnits) cnt2++;
+}
+if (units != targetUnits) {
+    if (units == targetHundreds || units == targetTens) cnt2++;
+}
                 if (cnt1 != expectedCnt1 || cnt2 != expectedCnt2) {
                     isValid = false;
                     break;
