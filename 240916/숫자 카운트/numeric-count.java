@@ -13,9 +13,9 @@ public class Main {
         }
 
         int possibleCnt = 0;
-        for (int i = 0; i <= 9; i++) {
-            for (int j = 0; j <= 9; j++) {
-                for (int k = 0; k <= 9; k++) {
+        for (int i = 1; i <= 9; i++) {
+            for (int j = 1; j <= 9; j++) {
+                for (int k = 1; k <= 9; k++) {
                     if (i != j && i != k && j != k) {
                         int num = i * 100 + j * 10 + k;
                         if (checkAllQueries(num, queries)) {
@@ -41,8 +41,8 @@ public class Main {
 
     private static int[] getCounts(int num, int guess) {
         int[] counts = new int[2];
-        String numStr = String.format("%03d", num);  
-        String guessStr = String.format("%03d", guess);
+        String numStr = String.valueOf(num);
+        String guessStr = String.valueOf(guess);
         
         for (int i = 0; i < 3; i++) {
             if (numStr.charAt(i) == guessStr.charAt(i)) {
