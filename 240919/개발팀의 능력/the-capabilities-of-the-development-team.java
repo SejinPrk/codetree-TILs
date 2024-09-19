@@ -21,20 +21,16 @@ public class Main {
     public static void findMinDiff(int[] skills, int[] teams, int index) {
         if (index == 5) {
             int[] teamSum = new int[3];
-            int[] teamCount = new int[3];
             for (int i = 0; i < 5; i++) {
                 teamSum[teams[i]] += skills[i];
-                teamCount[teams[i]]++;
             }
             
-            // 각 팀에 적어도 한 명의 개발자가 있는지 확인
-            if (teamCount[0] > 0 && teamCount[1] > 0 && teamCount[2] > 0) {
-                if (teamSum[0] != teamSum[1] && teamSum[1] != teamSum[2] && teamSum[0] != teamSum[2]) {
-                    int maxTeam = Math.max(teamSum[0], Math.max(teamSum[1], teamSum[2]));
-                    int minTeam = Math.min(teamSum[0], Math.min(teamSum[1], teamSum[2]));
-                    minDifference = Math.min(minDifference, maxTeam - minTeam);
-                    possible = true;
-                }
+            // 세 팀의 능력치가 모두 다른 경우에만 고려
+            if (teamSum[0] != teamSum[1] && teamSum[1] != teamSum[2] && teamSum[0] != teamSum[2]) {
+                int maxTeam = Math.max(teamSum[0], Math.max(teamSum[1], teamSum[2]));
+                int minTeam = Math.min(teamSum[0], Math.min(teamSum[1], teamSum[2]));
+                minDifference = Math.min(minDifference, maxTeam - minTeam);
+                possible = true;
             }
             return;
         }
