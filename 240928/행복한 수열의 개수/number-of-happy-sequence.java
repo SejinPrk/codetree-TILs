@@ -38,6 +38,10 @@ public class Main {
     }
 
     private static boolean isHappySeq(int[] seq, int m) {
+        if (m == 1) {
+            // m이 1일 경우, 모든 수열은 행복한 수열
+            return true;
+        }
         int cnt = 1;
 
         for (int i = 1; i < seq.length; i++) {
