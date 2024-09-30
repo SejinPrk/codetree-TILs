@@ -14,17 +14,24 @@ public class Main {
         }
         int maxSum = 0;
 
+         // 모든 가능한 위치와 회전에 대해 검사
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 // L 모양 블록 (4가지 회전)
-                if (i + 1 < n && j + 1 < m) maxSum = Math.max(maxSum, grid[i][j] + grid[i+1][j] + grid[i+1][j+1]);
-                if (i + 1 < n && j + 1 < m) maxSum = Math.max(maxSum, grid[i][j] + grid[i][j+1] + grid[i+1][j]);
-                if (i + 1 < n && j > 0) maxSum = Math.max(maxSum, grid[i][j] + grid[i+1][j] + grid[i+1][j-1]);
-                if (i > 0 && j + 1 < m) maxSum = Math.max(maxSum, grid[i][j] + grid[i][j+1] + grid[i-1][j+1]);
+                if (i + 1 < n && j + 1 < m) {
+                    maxSum = Math.max(maxSum, grid[i][j] + grid[i+1][j] + grid[i+1][j+1]);
+                    maxSum = Math.max(maxSum, grid[i][j] + grid[i][j+1] + grid[i+1][j]);
+                    maxSum = Math.max(maxSum, grid[i][j] + grid[i][j+1] + grid[i+1][j+1]);
+                    maxSum = Math.max(maxSum, grid[i+1][j] + grid[i+1][j+1] + grid[i][j+1]);
+                }
 
                 // 일자형 블록 (수평, 수직)
-                if (j + 2 < m) maxSum = Math.max(maxSum, grid[i][j] + grid[i][j+1] + grid[i][j+2]);
-                if (i + 2 < n) maxSum = Math.max(maxSum, grid[i][j] + grid[i+1][j] + grid[i+2][j]);
+                if (j + 2 < m) {
+                    maxSum = Math.max(maxSum, grid[i][j] + grid[i][j+1] + grid[i][j+2]);
+                }
+                if (i + 2 < n) {
+                    maxSum = Math.max(maxSum, grid[i][j] + grid[i+1][j] + grid[i+2][j]);
+                }
             }
         }
         System.out.println(maxSum);
