@@ -2,12 +2,10 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        
+       Scanner sc = new Scanner(System.in);    
         int N = sc.nextInt();
         int[][] times = new int[N][2];
-        
-        // 입력 받기
+
         for (int i = 0; i < N; i++) {
             times[i][0] = sc.nextInt(); // 시작 시간
             times[i][1] = sc.nextInt(); // 종료 시간
